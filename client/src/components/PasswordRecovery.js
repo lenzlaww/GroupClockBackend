@@ -41,19 +41,25 @@ const PasswordRecovery = () => {
             alert("Passwords do not match");
         }else{
 
-            axios.post("http://localhost:4000/auth/password-reset", {
-                token: token,
-                password: data.get("password"),
-            }).then((response) => {
+            axios
+              .post(
+                "https://groupclockbackend-2.onrender.com/auth/password-reset",
+                {
+                  token: token,
+                  password: data.get("password"),
+                }
+              )
+              .then((response) => {
                 console.log(response);
                 if (response.status === 200) {
-                    alert("Success! ", response.data.message);
+                  alert("Success! ", response.data.message);
                 } else {
-                    alert("Error: ", response.data.message);
+                  alert("Error: ", response.data.message);
                 }
-            }).catch((error) => {
+              })
+              .catch((error) => {
                 alert("Error: ", error);
-            })
+              });
         }
     }
 

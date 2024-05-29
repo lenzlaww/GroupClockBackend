@@ -1,12 +1,12 @@
 import axios from "axios";
 axios.defaults.withCredentials = true;
 const api = axios.create({
-//   baseURL: "https://groupclockbackend-1.onrender.com/api",
-    baseURL: "http://localhost:4000/api",
+  //   baseURL: "https://groupclockbackend-1.onrender.com/api",
+  baseURL: "https://groupclockbackend-2.onrender.com/api",
 });
 
 const apiAuth = axios.create({
-    baseURL: "http://localhost:4000/auth",
+  baseURL: "https://groupclockbackend-2.onrender.com/auth",
 });
 
 

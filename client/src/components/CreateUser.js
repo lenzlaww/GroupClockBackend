@@ -45,39 +45,45 @@ const CreateUser = () => {
             //     psw
             // );
 
-            axios.post("http://localhost:4000/auth/register", {
+            axios
+              .post("https://groupclockbackend-2.onrender.com/auth/register", {
                 company_id: data.get("company_id"),
                 email: data.get("email"),
                 psw: psw,
                 pswV: psw,
-            }).then((response) => {
+              })
+              .then((response) => {
                 console.log(response);
                 if (response.status === 201) {
-                    axios
-                      .post("http://localhost:4000/auth/valification-email", {
+                  axios
+                    .post(
+                      "https://groupclockbackend-2.onrender.com/auth/valification-email",
+                      {
                         email: data.get("email"),
                         company_id: data.get("company_id"),
-                      })
-                      .then((response) => {
-                        console.log(response);
-                        if (response.status === 200) {
-                          alert("Success! ", response.data.message);
+                      }
+                    )
+                    .then((response) => {
+                      console.log(response);
+                      if (response.status === 200) {
+                        alert("Success! ", response.data.message);
                         //   window.location.href = "/OTP";
-                        } else {
-                          alert("Fail! ", response.data.message);
-                        }
-                      })
-                      .catch((error) => {
-                        console.log(error);
-                        alert("Fail! ", error);
+                      } else {
+                        alert("Fail! ", response.data.message);
+                      }
+                    })
+                    .catch((error) => {
+                      console.log(error);
+                      alert("Fail! ", error);
                     });
-                }else{
-                    alert("Fail! ", response.data.message);
+                } else {
+                  alert("Fail! ", response.data.message);
                 }
-            }).catch((error) => {
+              })
+              .catch((error) => {
                 console.log(error);
                 alert("Fail! ", error);
-            });
+              });
 
             
             
