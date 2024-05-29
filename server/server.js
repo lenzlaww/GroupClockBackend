@@ -1,4 +1,5 @@
 const express = require('express');
+const cors = require("cors");
 require('dotenv').config();
 
 const routes = require('./routes/routes.js');
@@ -14,7 +15,12 @@ app.use(express.urlencoded({ limit: "50mb" }));
 //   express.urlencoded({ limit: "1000mb", extended: true, parameterLimit: 50000 })
 // );
 // app.use(express.urlencoded({ extended: true }));
-
+app.use(
+  cors({
+    origin: ["http://localhost:3000"],
+    credentials: true,
+  })
+);
 app.use(express.json());
 app.use((req, res, next) => {
     next();

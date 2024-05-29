@@ -1,6 +1,19 @@
 const DataModel = require('../models/dataModel');
 const { MongoClient } = require("mongodb");
 
+const getCompaniesPairs = async(req, res) =>{
+    let pairs = [];
+    try{
+        const companies = await DataModel.find();
+        companies.forEach(company => {
+            pairs.push({company_id: company.company_id, name: company.name});
+        });
+        res.status(200).json({success: true, data: pairs});
+    }catch (error) {
+        res.status(400).json({ message: error.message });
+    }
+}
+
 const createCompany = async (req, res) => {
     const {company_id, name, location, camera_list, total_screens, users} = req.body;
     
@@ -79,10 +92,12 @@ const createUser = async(req, res) => {
         if (!company) {
             res.status(404).json({ success: false, message: "Company not found" });
         }
+        console.log(company);
         const user = {email: email, psw: psw, employee: []};
         if(!user){
             res.status(404).json({ success: false, message: "User not found" });
         }
+        console.log(user);
         company.users.push(user);
         await company.save();
         res.status(201).json({success: true, data: company});
@@ -374,4 +389,5 @@ module.exports = {
   updateEmployee,
   deleteEmployee,
   getEmployees,
+  getCompaniesPairs
 };

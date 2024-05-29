@@ -1,25 +1,27 @@
-import "./App.css";
-import { React } from "react";
+import './App.css';
+import React from 'react';
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import { AuthContextProvider } from "./auth";
 import { GlobalStoreContextProvider } from "./store";
-import {
-} from "./components";
+
+import { Login, Home, CreateCompany, CreateUser, PasswordRecovery, OTPinput } from "./components";
+
 
 const App = () => {
   return (
-    <BrowserRouter>
-      <AuthContextProvider>
+    <>
+      <BrowserRouter>
         <GlobalStoreContextProvider>
-          <AppBanner />
           <Switch>
-            <Route path="/" exact component={HomeWrapper}/>
+            <Route exact path="/" component={Login} />
+            <Route exact path="/Home/" component={Home} />
+            <Route exact path="/New/" component={CreateCompany} />
+            <Route exact path="/NewUser/" component={CreateUser} />
+            <Route exact path="/PasswordRecovery/" component={PasswordRecovery} />
+            <Route exact path="/OTP/" component={OTPinput} />
           </Switch>
-          <Statusbar />
         </GlobalStoreContextProvider>
-      </AuthContextProvider>
-    </BrowserRouter>
+      </BrowserRouter>
+    </>
   );
-};
-
+}
 export default App;

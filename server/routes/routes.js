@@ -14,7 +14,8 @@ const {
   updateEmployee,
   deleteEmployee,
   getEmployees,
-} = require("../controllers/controller");
+  getCompaniesPairs,
+} = require("../controllers/controller.js");
 
 const router = express.Router();
 
@@ -22,6 +23,7 @@ router.post('/Company', createCompany);
 router.get('/Company', getCompany);
 router.put('/Company', updateCompany);
 router.delete('/Company', deleteCompany);
+router.get('/Companies', getCompaniesPairs);
 router.post('/User', createUser);
 router.get('/User', getUsers);
 router.put('/User', updateUser);
