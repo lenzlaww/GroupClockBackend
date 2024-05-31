@@ -85,7 +85,7 @@ function GlobalStoreContextProvider(props) {
         console.log('call createCompany');
         const response = await api.createCompany(company_id, name, location, camera_list, total_screens);
         console.log(response);
-        if (response.status === 201) {
+        if (response.status === 200) {
             store.loadCompaniesPairs();
         }else{
             console.log(response.message);
@@ -102,7 +102,7 @@ function GlobalStoreContextProvider(props) {
             passwordV
             ).then((response) => {
                 console.log(response);
-                if (response.status === 201) {
+                if (response.status === 200) {
                     return "User created";
                 } else {
                     return "Fail! ", response.data.message;

@@ -54,7 +54,7 @@ const CreateUser = () => {
               })
               .then((response) => {
                 console.log(response);
-                if (response.status === 201) {
+                if (response.status === 200) {
                   axios
                     .post(
                       "https://groupclockbackend-2.onrender.com/auth/valification-email",

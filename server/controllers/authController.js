@@ -76,7 +76,7 @@ registerUser = async(req, res) => {
         console.log("newUser: " + newUser);
         company.users.push(newUser);
         await company.save();
-        res.status(201).json({success: true, data: company});
+        res.status(200).json({success: true, data: company});
 
 
 

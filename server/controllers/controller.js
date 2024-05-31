@@ -26,7 +26,7 @@ const createCompany = async (req, res) => {
           total_screens,
           users,
         });
-        res.status(201).json({success: true, data: newData});
+        res.status(200).json({success: true, data: newData});
     } catch (error) {
         res.status(400).json({ message: error.message });
     }
@@ -100,7 +100,7 @@ const createUser = async(req, res) => {
         console.log(user);
         company.users.push(user);
         await company.save();
-        res.status(201).json({success: true, data: company});
+        res.status(200).json({success: true, data: company});
     }
     catch (error) {
         res.status(400).json({ success: false, message: error.message });
@@ -191,7 +191,7 @@ const createEmployee = async(req, res) => {
         user.employees.push(body);
         await company.save();
         console.log("Employee created successfully");
-        res.status(201).json({success: true, data: company});
+        res.status(200).json({success: true, data: company});
     }
     catch (error) {
         console.log("Employee created faliure");
