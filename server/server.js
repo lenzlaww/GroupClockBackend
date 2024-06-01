@@ -33,18 +33,21 @@ app.use('/api', routes);
 app.use('/auth', authRoutes);
 
 
-app.use(express.static(path.join(__dirname, "client/build")));
+// app.use(express.static(path.join(__dirname, "client/build")));
 
-app.get(["/Home", "/New", "/NewUser", "/PasswordRecovery"], (req, res) => {
-  res.sendFile(path.join(__dirname, "client/build", "index.html"));
-});
+// app.get(["/Home", "/New", "/NewUser", "/PasswordRecovery"], (req, res) => {
+//   res.sendFile(path.join(__dirname, "client/build", "index.html"));
+// });
 
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "client/build", "index.html"));
-});
+// app.get("*", (req, res) => {
+//   res.sendFile(path.join(__dirname, "client/build", "index.html"));
+// });
 
 mongoose
-  .connect(process.env.MONGO_URI)
+  .connect(process.env.MONGO_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
   .then(() => {
     //listen for request
     app.listen(process.env.PORT, () => {
