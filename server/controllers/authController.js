@@ -152,7 +152,8 @@ registerVerificationEmail = async (req, res) => {
     console.log("email: " + email);
     console.log("company_id: " + company_id);
    
-    let link = `http://localhost:3000/PasswordRecovery?token=${token}`;
+    // let link = `http://localhost:3000/PasswordRecovery?token=${token}`;
+    let link = `https://main--playful-klepon-c87e37.netlify.app/PasswordRecovery?token=${token}`;
     
     let mail_config = await transporter.sendMail({
       from: "app@handpunchguys.com",
