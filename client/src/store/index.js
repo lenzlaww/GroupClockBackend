@@ -87,6 +87,7 @@ function GlobalStoreContextProvider(props) {
         console.log(response);
         if (response.status === 200) {
             store.loadCompaniesPairs();
+            history.push("/Home");
         }else{
             console.log(response.message);
         }
