@@ -9,7 +9,7 @@ const mongoose = require('mongoose');
 
 const allowedOrigins = [
   "http://localhost:3000",
-  "https://main--playful-klepon-c87e37.netlify.app",
+  "https://playful-klepon-c87e37.netlify.app",
 ];
 
 
