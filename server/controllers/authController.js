@@ -207,10 +207,28 @@ registerVerificationEmail = async (req, res) => {
 
 }
 
+admin = async(req, res) => {
+  const { username, password } = req.body;
+  if (!username || !password) {
+    return res
+      .status(400)
+      .json({ errorMessage: "Please enter all required fields." });
+  }
+
+  if (username !== "admin" || password !== "admin") {
+    return res.status(401).json({
+      errorMessage: "Wrong email or password provided",
+    });
+  } else {
+    res.status(200).json({ success: true, message: "Admin login successful" });
+  }
+}
+
 module.exports = {
   loginUser,
   registerUser,
   resetPassword,
   registerVerificationEmail,
+  admin,
 };
     

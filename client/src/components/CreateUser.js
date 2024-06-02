@@ -15,6 +15,7 @@ const defaultTheme = createTheme();
 
 const CreateUser = () => {
   const { store } = useContext(GlobalStoreContext);
+  const baseURL = "https://groupclockbackend-2.onrender.com";
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -46,7 +47,7 @@ const CreateUser = () => {
             // );
 
             axios
-              .post("https://groupclockbackend-2.onrender.com/auth/register", {
+              .post(baseURL + "/auth/register", {
                 company_id: data.get("company_id"),
                 email: data.get("email"),
                 psw: psw,
@@ -57,7 +58,7 @@ const CreateUser = () => {
                 if (response.status === 200) {
                   axios
                     .post(
-                      "https://groupclockbackend-2.onrender.com/auth/valification-email",
+                      baseURL + "/auth/valification-email",
                       {
                         email: data.get("email"),
                         company_id: data.get("company_id"),

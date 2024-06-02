@@ -15,6 +15,7 @@ import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import InputAdornment from "@mui/material/InputAdornment";
 
 const PasswordRecovery = () => {
+    const baseURL = "https://groupclockbackend-2.onrender.com";
     const [showPassword, setShowPassword] = useState(false);
     const [showPasswordV, setShowPasswordV] = useState(false);
     const [token, setToken] = useState("");
@@ -43,7 +44,7 @@ const PasswordRecovery = () => {
 
             axios
               .post(
-                "https://groupclockbackend-2.onrender.com/auth/password-reset",
+                baseURL + "/auth/password-reset",
                 {
                   token: token,
                   password: data.get("password"),

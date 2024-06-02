@@ -13,3 +13,5 @@ The client side will run on [http://localhost:3000](http://localhost:3000) and t
 
 ## Deployment
 Backend is deployed on Render. You can access the deployed backend [here](https://groupclockbackend-2.onrender.com).
+
+Frontend is deployed on Netlify. You can access the deployed frontend [here](https://main--playful-klepon-c87e37.netlify.app/).

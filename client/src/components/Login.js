@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useContext } from "react";
 import { useHistory } from "react-router-dom";
-import { GlobalStoreContext } from "../store";
+import axios from "axios";
 
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
@@ -16,14 +16,33 @@ import Typography from "@mui/material/Typography";
 
 const Login = () => {
 
+    const baseURL = "https://groupclockbackend-2.onrender.com";
+    // const baseURL = "http://localhost:4000"
+
     const handleSubmit = (event) => {
         event.preventDefault();
         const formData = new FormData(event.currentTarget);
 
-        if (formData.get('email') === 'admin' && formData.get('password') === 'admin') {
-            console.log('Logged in');
-            window.location.href += "Home";
-        }
+        axios.post(baseURL + "/auth/admin", {
+            username: formData.get('email'),
+            password: formData.get('password')
+        }).then((response) => {
+            console.log(response);
+            if (response.status === 200) {
+                console.log('Logged in');
+                window.location.href += "Home";
+            }else{
+                alert("Invalid username or password");
+            }
+        }).catch((error) => {
+            console.log(error);
+            alert("Invalid username or password");
+        });
+
+        // if (formData.get('email') === 'admin' && formData.get('password') === 'admin') {
+        //     console.log('Logged in');
+        //     window.location.href += "Home";
+        // }
     };
 
 
